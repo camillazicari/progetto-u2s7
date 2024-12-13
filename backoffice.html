@@ -33,7 +33,7 @@
         <div class="col-12 border-bottom">
           <h1 class="mt-5">Add Product</h1>
         </div>
-        <form class="col-12">
+        <form class="col-12" id="formProduct">
           <div class="row">
             <div class="col-12 g-2">
               <label for="name">Nome</label>
@@ -43,6 +43,7 @@
                 type="text"
                 placeholder="Nome prodotto"
                 class="w-100 px-2"
+                id="name"
                 required
               />
             </div>
@@ -55,6 +56,7 @@
                 type="text"
                 placeholder="Modello"
                 class="w-100 px-2"
+                id="brand"
                 required
               />
             </div>
@@ -63,7 +65,7 @@
               <label for="name">Prezzo</label>
             </div>
             <div class="col-12 g-2">
-              <input type="text" placeholder="0€" class="w-100 px-2" required/>
+              <input type="number" placeholder="0€" class="w-100 px-2" id="price" required/>
             </div>
 
             <div class="col-12 g-2">
@@ -74,6 +76,7 @@
                 type="text"
                 placeholder="http://placehold.it/300x400"
                 class="w-100 px-2"
+                id="imageUrl"
                 required
               />
             </div>
@@ -84,7 +87,7 @@
             <div class="col-12 g-2">
               <textarea
                 name="description"
-                id="descriptionArea"
+                id="description"
                 class="w-100 px-2"
                 required
               ></textarea>
