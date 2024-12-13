@@ -30,28 +30,38 @@ const newProduct = {
     price: 0,
 };
 
-newProduct.name = myName.value;
-newProduct.description = description.value;
-newProduct.brand = brand.value;
-newProduct.imageUrl = imageUrl.value;
-newProduct.price = price.value;
+class Product {
+    constructor(_name, _description, _brand, _imageUrl, _price) {
+        this.name = _name;
+        this.description = _description;
+        this.brand = _brand;
+        this.imageUrl = _imageUrl;
+        this.price = _price;
+    }
+}
+
+// newProduct.name = myName.value;
+// newProduct.description = description.value;
+// newProduct.brand = brand.value;
+// newProduct.imageUrl = imageUrl.value;
+// newProduct.price = price.value;
 
 console.log(newProduct);
 
 function printProducts() {
     let row = document.getElementById('row');
     row.innerHTML = '';
-    let secondPage = 'backoffice.html';
     let thirdPage = 'description.html';
-    products.forEach((product) => {
+    for (let i = 0; i < products.length; i++) {
+        let product1 = new Product(products[i].name, products[i].description, products[i].brand, products[i].imageUrl, products[i].price);
         let colProduct = `
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-            <img src="${product.imageUrl}" style="width: 100%" />
+            <img src="${product1.imageUrl}" style="width: 100%" />
             <div class="card-body">
-                <h5 class="card-title">${product.name}</h5>
+                <h5 class="card-title">${product1.name}</h5>
                 <p class="card-text">
-                ${product.description}
+                ${product1.description}
                 </p>
                 <div
                 class="d-flex justify-content-between align-items-center"
@@ -59,19 +69,12 @@ function printProducts() {
                 <div class="btn-group">
                     <button
                         type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        onclick="fillImageInModal(this)"
-                    >
-                    <a href=${secondPage} >Modifica</a>
-                    </button>
+                        class="btn btn-sm btn-outline-secondary btnModify"
+                    >Modifica</button>
                     <button
                     type="button"
-                    class="btn btn-sm btn-outline-secondary"
-                    onclick="hideColumn(this)"
-                    >
-                    <a href=${thirdPage} >Scopri di più</a>
+                    class="btn btn-sm btn-outline-secondary">                    >
+                    <a href="${thirdPage}">Scopri di più</a>
                     </button>
                 </div>
                 </div>
@@ -80,5 +83,14 @@ function printProducts() {
     </div>
     `
         row.innerHTML += colProduct;
-    })
+        const btnModify = document.querySelectorAll('.btnModify');
+        btnModify[i].addEventListener('click', (e) => {
+            e.preventDefault();
+            let firstUrl = 'backoffice.html';
+            let newUrl = `${firstUrl}?_id=${products[i]._id}`;
+            window.location.href = newUrl;
+        })
+    }
 }
+
+

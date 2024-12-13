@@ -62,3 +62,9 @@ btnSave.addEventListener('click', async (e) => {
     await postProducts();
     await getProducts();
 });
+
+// async function deleteProduct() {
+//     try {
+//         let response = await fetch(urlProducts  )
+//     }
+// }
