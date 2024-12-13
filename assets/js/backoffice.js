@@ -7,6 +7,9 @@ const imageUrl = document.getElementById('imageUrl');
 const description = document.getElementById('description');
 const btnSave = document.getElementById('btnSave');
 
+const newUrl = new URLSearchParams(window.location.search);
+const productId = newUrl.get('_id');
+
 const newProduct = {
     name: '',
     description: '',
@@ -63,8 +66,19 @@ btnSave.addEventListener('click', async (e) => {
     await getProducts();
 });
 
-// async function deleteProduct() {
-//     try {
-//         let response = await fetch(urlProducts  )
-//     }
-// }
+ async function modifyProduct() {
+     try {
+         let response = await fetch(urlProducts+productId, {
+            method: "PUT",
+            body: JSON.stringify(newProduct),
+            headers: {
+                Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViZjc3MWQyMjA3MTAwMTVkZTJmM2QiLCJpYXQiOjE3MzQwODAzNjksImV4cCI6MTczNTI4OTk2OX0.D5cZBPHuGNwIeNn3jyHQUcut9jeC5ZD44MIUux_F5Ms",
+                "Content-Type": "application/json",
+            }
+         });
+     } catch {
+
+     }
+ }
+
