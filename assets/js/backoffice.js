@@ -1,6 +1,7 @@
 const urlProducts = `https://striveschool-api.herokuapp.com/api/product/`;
 let products = [];
 let product;
+let modifiedProduct = {};
 const myName = document.getElementById('name');
 const brand = document.getElementById('brand');
 const price = document.getElementById('price');
@@ -57,23 +58,27 @@ async function getProducts() {
 
 btnSave.addEventListener('click', async (e) => {
     e.preventDefault();
-
-    newProduct.name = myName.value;
-    newProduct.description = description.value;
-    newProduct.brand = brand.value;
-    newProduct.imageUrl = imageUrl.value;
-    newProduct.price = parseFloat(price.value);
-    console.log("Nuovo prodotto da inviare:", newProduct);
+    if (productId) {
+        await modifyProduct();
+    } else {
+        newProduct.name = myName.value;
+        newProduct.description = description.value;
+        newProduct.brand = brand.value;
+        newProduct.imageUrl = imageUrl.value;
+        newProduct.price = parseFloat(price.value);
+        console.log("Nuovo prodotto da inviare:", newProduct);
+        await postProducts();
+    }
 
     formProduct.reset();
-    await postProducts();
 });
 
 async function modifyProduct() {
+    modifyForm();
     try {
         let response = await fetch(urlProducts + productId, {
             method: "PUT",
-            body: JSON.stringify(newProduct),
+            body: JSON.stringify(modifiedProduct),
             headers: {
                 Authorization:
                     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViZjc3MWQyMjA3MTAwMTVkZTJmM2QiLCJpYXQiOjE3MzQwODAzNjksImV4cCI6MTczNTI4OTk2OX0.D5cZBPHuGNwIeNn3jyHQUcut9jeC5ZD44MIUux_F5Ms",
@@ -91,6 +96,7 @@ function init() {
 
     if (checkId()) {
         getProducts();
+        btnSave.innerText = 'Modify'
     }
 }
 
@@ -108,4 +114,12 @@ function fillForm() {
     price.value = product.price;
     imageUrl.value = product.imageUrl;
     description.value = product.description;
+}
+
+function modifyForm() {
+    modifiedProduct.name = myName.value ;
+    modifiedProduct.brand = brand.value;
+    modifiedProduct.price = price.value;
+    modifiedProduct.imageUrl = imageUrl.value;
+    modifiedProduct.description = description.value;
 }
