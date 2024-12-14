@@ -40,12 +40,6 @@ class Product {
     }
 }
 
-// newProduct.name = myName.value;
-// newProduct.description = description.value;
-// newProduct.brand = brand.value;
-// newProduct.imageUrl = imageUrl.value;
-// newProduct.price = price.value;
-
 console.log(newProduct);
 
 function printProducts() {
@@ -57,7 +51,7 @@ function printProducts() {
         let colProduct = `
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-            <img src="${product1.imageUrl}" style="width: 100%" />
+            <img src="${product1.imageUrl}" />
             <div class="card-body">
                 <h5 class="card-title">${product1.name}</h5>
                 <p class="card-text">
