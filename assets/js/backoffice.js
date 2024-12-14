@@ -6,6 +6,7 @@ const price = document.getElementById('price');
 const imageUrl = document.getElementById('imageUrl');
 const description = document.getElementById('description');
 const btnSave = document.getElementById('btnSave');
+const formProduct = document.getElementById('formProduct');
 
 const newUrl = new URLSearchParams(window.location.search);
 const productId = newUrl.get('_id');
@@ -62,6 +63,7 @@ btnSave.addEventListener('click', async (e) => {
     newProduct.price = parseFloat(price.value); 
     console.log("Nuovo prodotto da inviare:", newProduct);
 
+    formProduct.reset();
     await postProducts();
     await getProducts();
 });
@@ -81,4 +83,3 @@ btnSave.addEventListener('click', async (e) => {
 
      }
  }
-
