@@ -40,7 +40,7 @@ class Product {
     }
 }
 
-console.log(newProduct);
+console.log(products);
 
 function printProducts() {
     let row = document.getElementById('row');
@@ -76,13 +76,18 @@ function printProducts() {
         </div>
     </div>
     `
-        row.innerHTML += colProduct;
-        const btnModify = document.querySelectorAll('.btnModify');
-        btnModify[i].addEventListener('click', (e) => {
+         row.innerHTML += colProduct;
+    }
+
+    const btnModify = document.querySelectorAll('.btnModify');
+    for (let i=0; i<btnModify.length; i++) {
+        btnModify[i].addEventListener('click', (e) => { 
             e.preventDefault();
             let firstUrl = 'backoffice.html';
             let newUrl = `${firstUrl}?_id=${products[i]._id}`;
             window.location.href = newUrl;
         })
     }
+        
+       
 }
