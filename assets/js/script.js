@@ -87,7 +87,5 @@ function printProducts() {
             let newUrl = `${firstUrl}?_id=${products[i]._id}`;
             window.location.href = newUrl;
         })
-    }
-        
-       
+    }          
 }
