@@ -126,3 +126,25 @@ function modifyForm() {
     modifiedProduct.imageUrl = imageUrl.value;
     modifiedProduct.description = description.value;
 }
+
+async function deleteProduct() {
+    try {
+        let response = await fetch(urlProducts + productId, {
+            method: "DELETE",
+            body: JSON.stringify(modifiedProduct),
+            headers: {
+                Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViZjc3MWQyMjA3MTAwMTVkZTJmM2QiLCJpYXQiOjE3MzQwODAzNjksImV4cCI6MTczNTI4OTk2OX0.D5cZBPHuGNwIeNn3jyHQUcut9jeC5ZD44MIUux_F5Ms",
+                "Content-Type": "application/json",
+            }
+        });
+    } catch {
+        console.log(error);
+    }
+}
+
+btnDelete.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteProduct();
+    formProduct.reset();
+})
