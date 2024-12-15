@@ -145,6 +145,9 @@ async function deleteProduct() {
 
 btnDelete.addEventListener('click', (e) => {
     e.preventDefault();
-    deleteProduct();
-    formProduct.reset();
+    confirm('Are you sure?');
+    if (confirm()) {
+      deleteProduct();
+    formProduct.reset();  
+    } 
 })
