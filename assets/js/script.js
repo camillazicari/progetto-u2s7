@@ -67,8 +67,8 @@ function printProducts() {
                     >Modifica</button>
                     <button
                     type="button"
-                    class="btn btn-sm btn-outline-secondary">                    >
-                    <a href="${thirdPage}">Scopri di più</a>
+                    class="btn btn-sm btn-outline-secondary btnScopri">
+                    Scopri di più
                     </button>
                 </div>
                 </div>
@@ -87,5 +87,16 @@ function printProducts() {
             let newUrl = `${firstUrl}?_id=${products[i]._id}`;
             window.location.href = newUrl;
         })
-    }          
+    }      
+    
+    const btnScopri = document.querySelectorAll('.btnScopri');
+    for (let i=0; i<btnScopri.length; i++) {
+        btnScopri[i].addEventListener('click', (e) => { 
+            e.preventDefault();
+            let firstUrl = 'description.html';
+            let newUrl = `${firstUrl}?_id=${products[i]._id}`;
+            window.location.href = newUrl;
+        })
+    }   
+    
 }
