@@ -10,6 +10,7 @@ const description = document.getElementById('description');
 const btnSave = document.getElementById('btnSave');
 const formProduct = document.getElementById('formProduct');
 const btnDelete = document.getElementById('btnDelete');
+const btnReset = document.getElementById('btnReset');
 
 const newUrl = new URLSearchParams(window.location.search);
 const productId = newUrl.get('_id');
@@ -150,4 +151,10 @@ btnDelete.addEventListener('click', (e) => {
       deleteProduct();
     formProduct.reset();  
     } 
+})
+
+btnReset.addEventListener('click', (e) => {
+    e.preventDefault();
+    confirm('Are you sure?');
+    formProduct.reset();
 })
