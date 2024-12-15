@@ -65,11 +65,11 @@ function printProducts() {
                 <div class="btn-group">
                     <button
                         type="button"
-                        class="btn btn-sm btn-outline-secondary btnModify"
+                        class="btn btn-sm bg-warning btnModify"
                     >Modifica</button>
                     <button
                     type="button"
-                    class="btn btn-sm btn-outline-secondary btnScopri">
+                    class="btn btn-sm bg-info btnScopri">
                     Scopri di più
                     </button>
                 </div>
