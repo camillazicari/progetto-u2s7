@@ -51,7 +51,9 @@ function printProducts() {
         let colProduct = `
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-            <img src="${product1.imageUrl}" />
+            <div class="imageContainer">
+            <img src="${product1.imageUrl}" class="w-100"/>
+            </div>
             <div class="card-body">
                 <h5 class="card-title">${product1.name}</h5>
                 <p class="card-text">
@@ -76,27 +78,27 @@ function printProducts() {
         </div>
     </div>
     `
-         row.innerHTML += colProduct;
+        row.innerHTML += colProduct;
     }
 
     const btnModify = document.querySelectorAll('.btnModify');
-    for (let i=0; i<btnModify.length; i++) {
-        btnModify[i].addEventListener('click', (e) => { 
+    for (let i = 0; i < btnModify.length; i++) {
+        btnModify[i].addEventListener('click', (e) => {
             e.preventDefault();
             let firstUrl = 'backoffice.html';
             let newUrl = `${firstUrl}?_id=${products[i]._id}`;
             window.location.href = newUrl;
         })
-    }      
-    
+    }
+
     const btnScopri = document.querySelectorAll('.btnScopri');
-    for (let i=0; i<btnScopri.length; i++) {
-        btnScopri[i].addEventListener('click', (e) => { 
+    for (let i = 0; i < btnScopri.length; i++) {
+        btnScopri[i].addEventListener('click', (e) => {
             e.preventDefault();
             let firstUrl = 'description.html';
             let newUrl = `${firstUrl}?_id=${products[i]._id}`;
             window.location.href = newUrl;
         })
-    }   
-    
+    }
+
 }
